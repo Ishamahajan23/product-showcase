@@ -1,31 +1,32 @@
-import { motion } from "framer-motion";
+import React from 'react'
+import StarBorder from  "../../reactbits/StarBorder/StarBorder.jsx";
 
-const ProductCard = ({ product, onClick }) => {
+
+
+const ProductCard = ({product}) => {
   return (
-    <motion.div
-      onClick={() => onClick(product)}
-      className="cursor-pointer bg-white rounded-xl shadow-sm overflow-hidden border hover:shadow-xl"
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 200, damping: 15 }}
-    >
-      <div className="bg-gray-100 h-48 flex items-center justify-center p-4">
+    <div className="bg-white shadow-md p-4 rounded-2xl flex flex-col items-center justify-between h-full">
+      <div>
         <img
           src={product.image}
           alt={product.title}
-          className="h-full object-contain"
+          className="w-100 h-100 object-full rounded-t-lg "
         />
-      </div>
-      <div className="p-4">
-        <h3 className="text-sm font-medium text-gray-800 line-clamp-2">
+        <h2 className="text-lg font-semibold mt-2 text-wrap font-sans text-center">
           {product.title}
-        </h3>
-        <p className="mt-1 text-base font-semibold text-gray-900">
-          ₹ {product.price}
-        </p>
+        </h2>
+        <p className="text-center"> {product.rating.rate}</p>
       </div>
-    </motion.div>
-  );
-};
 
-export default ProductCard;
+      <div className="flex items-center justify-between mt-2 gap-4">
+        <p className="text-lg font-bold mt-2">${product.price}</p>
+
+        <button className="mt-4 bg-[#6787E3] text-white px-4 py-2 rounded-lg hover:bg-gradient-to-r from-[#a3a3a3] to-[#7d7d7d] transition duration-300">
+          Details
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default ProductCard

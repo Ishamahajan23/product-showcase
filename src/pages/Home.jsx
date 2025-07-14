@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 import CardSwap, { Card } from "../../reactbits/CardSwap/CardSwap";
 import ScrollVelocity from "../../reactbits/ScrollVelocity/ScrollVelocity";
 import image2 from "../assets/image2.png";
+import Footer from "../components/Footer";
 const Home = () => {
     const velocity = 30; 
   return (
     <>
       <div className="relative min-h-screen w-full bg-gray-800">
-
         <Navbar />
 
         <div
@@ -39,17 +39,19 @@ const Home = () => {
             delay={5000}
             pauseOnHover={false}
           >
-            <Card customClass="p-4 shadow-lg flex flex-col gap-2">
-              <h3 className="text-xl font-bold text-white ">Men's Clothing</h3>
+            <Card customClass="p-4 shadow-lg flex flex-col gap-2 cursor-pointer">
+              <h3 className="text-xl font-bold text-white font-sans ">
+                Men's Clothing
+              </h3>
               <p className="text-white">Explore the latest trends</p>
               <img
                 src="https://i.pinimg.com/736x/ca/58/9c/ca589c7cd207aeb24c2365f79b293948.jpg"
                 alt="Mens Clothing"
-                className=" w-300 h-90 object-center rounded-2xl"
+                className=" w-300 h-90 object-center rounded-2xl "
               />
             </Card>
-            <Card customClass="p-6 shadow-lg flex flex-col gap-2">
-              <h3 className="text-xl font-bold text-white ">
+            <Card customClass="p-6 shadow-lg flex flex-col gap-2 cursor-pointer">
+              <h3 className="text-xl font-bold text-white font-sans ">
                 Women's Clothing
               </h3>
               <p className="text-white ">Discover your style</p>
@@ -59,8 +61,10 @@ const Home = () => {
                 className=" w-300 h-90 object-bottom rounded-2xl"
               />
             </Card>
-            <Card customClass="p-6 shadow-lg flex flex-col gap-2">
-              <h3 className="text-xl font-bold text-white">Accessories</h3>
+            <Card customClass="p-6 shadow-lg flex flex-col gap-2 cursor-pointer">
+              <h3 className="text-xl font-bold text-white font-sans ">
+                Accessories
+              </h3>
               <p className="text-white">Complete your look</p>
               <img
                 src="https://i.pinimg.com/1200x/de/e0/95/dee095e51001fecffee4aa859e73bfd8.jpg"
@@ -71,9 +75,9 @@ const Home = () => {
           </CardSwap>
         </div>
 
-
-        
-
+        <div>
+          <Footer />
+        </div>
       </div>
     </>
   );

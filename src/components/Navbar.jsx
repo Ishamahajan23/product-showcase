@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import SplitText from "../../reactbits/SplitText/SplitText";
 import CircularText from "../../reactbits/CircularText/CircularText";
 import TextPressure from "../../reactbits/TextPressure/TextPressure"
 import GradientText from "../../reactbits/GradientText/GradientText"
@@ -20,7 +19,7 @@ const Navbar = () => {
           </GradientText>
         </div>
 
-        <div className="hidden md:flex space-x-6 text-gray-100 font-medium px-5">
+        <div className="hidden md:flex space-x-6 text-gray-100 font-lg px-5 font-sans" >
           <Link to="/">Home</Link>
           <Link to="/products">Shop</Link>
         </div>
