@@ -19,7 +19,7 @@ const Navbar = () => {
           </GradientText>
         </div>
 
-        <div className="hidden md:flex space-x-6 text-gray-100 font-lg px-5 font-sans" >
+        <div className="flex space-x-6 text-gray-100 font-lg px-5 font-sans" >
           <Link to="/">Home</Link>
           <Link to="/products">Shop</Link>
         </div>

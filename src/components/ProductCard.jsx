@@ -48,6 +48,7 @@ const ProductCard = ({ product }) => {
     <div
       ref={cardRef}
       className="bg-white shadow-md p-4 rounded-2xl flex flex-col items-center justify-between h-full w-full transition-transform duration-300 hover:shadow-lg cursor-pointer"
+      onClick={handleClick}
     >
       <div className="flex flex-col items-center justify-center">
         <img
