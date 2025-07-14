@@ -22,9 +22,7 @@ const Home = () => {
         let data = await res.json();
         let Data = data.filter((product) => product.rating.rate >= 4.5);
 
-        setProducts(
-          Object.entries(Data.slice(0,4)).map(([key, value]) => ({ ...value, id: key }))
-        );
+        setProducts(Data.slice(0, 4)); 
       }
 
       useEffect(() => {
@@ -135,8 +133,8 @@ const Home = () => {
             ref={gridRef}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-10 px-15"
           >
-            {products.map((product, index) => (
-              <div key={index} className="flex justify-center product-card ">
+            {products.map((product) => (
+              <div key={product.id} className="flex justify-center product-card ">
                 <ProductCard product={product} />
               </div>
             ))}
