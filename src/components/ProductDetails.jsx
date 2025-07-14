@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
+
 import Loader from "../components/Loader";
 
 import { useParams } from "react-router-dom";
@@ -10,12 +8,11 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const detailsRef = useRef(null);
 
   async function fetchProduct() {
     try {
       setLoading(true);
-      let res = await fetch(`https://fakestoreapi.com/products/${id+1}`);
+      let res = await fetch(`https://fakestoreapi.com/products/${id}`);
       let data = await res.json();
       console.log(data);
       setProduct(data);
@@ -29,15 +26,7 @@ const ProductDetails = () => {
   useEffect(() => {
     fetchProduct();
   }, [id]);
-  useEffect(() => {
-    if (product && detailsRef.current) {
-      gsap.fromTo(
-        detailsRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-      );
-    }
-  }, [product]);
+  
 
   if (loading) {
     return <Loader />;
@@ -46,31 +35,25 @@ const ProductDetails = () => {
   if (!product) {
     return (
       <>
-        <Navbar />
         <div className="container mx-auto p-4 flex items-center justify-center min-h-screen">
           <p className="text-lg text-gray-700">Product not found</p>
         </div>
-        <Footer />
       </>
     );
   }
 
   return (
     <>
-      <Navbar />
-      <div
-        ref={detailsRef}
-        className=" w-full container mx-auto p-4 flex flex-col md:flex-row items-center md:items-start justify-center gap-8 bg-gray-100 min-h-screen"
-      >
-        <div className="w-full md:w-1/2 flex justify-center">
+      <div className=" w-full flex flex-col md:flex-row items-center justify-center gap-4 p-6 bg-gray-100 h-screen">
+        <div className=" bg-white h-full flex items-center justify-center p-6 rounded-lg shadow-lg md:w-1/2">
           <img
             src={product.image}
             alt={product.title}
-            className="rounded-lg p-5 shadow-lg max-w-200 h-200 md:max-w-300 md:h-300 object-cover"
+            className="w-100 h-100"
           />
         </div>
 
-        <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+        <div className="w-full h-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg  flex flex-col items-start justify-center">
           <h1 className="text-2xl md:text-4xl font-bold mb-4">
             {product.title}
           </h1>
@@ -88,10 +71,8 @@ const ProductDetails = () => {
               ({product.rating?.count} reviews)
             </span>
           </div>
-
         </div>
       </div>
-      <Footer />
     </>
   );
 };

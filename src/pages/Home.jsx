@@ -1,11 +1,9 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import ProductCard from "../components/ProductCard";
-import Navbar from "../components/Navbar";
 import CardSwap, { Card } from "../../reactbits/CardSwap/CardSwap";
 import ScrollVelocity from "../../reactbits/ScrollVelocity/ScrollVelocity";
 import image2 from "../assets/image2.png";
-import Footer from "../components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CurvedLoop from "../../reactbits/CurvedLoop/CurvedLoop";
@@ -59,7 +57,6 @@ const Home = () => {
   return (
     <>
       <div className="relative min-h-screen w-full bg-gray-800">
-        <Navbar />
 
         <div
           style={{
@@ -144,10 +141,6 @@ const Home = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div>
-          <Footer />
         </div>
       </div>
     </>

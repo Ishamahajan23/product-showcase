@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import ProductCard from "../components/ProductCard";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,10 +12,8 @@ const ProductList = () => {
   async function fetchProduct() {
     let res = await fetch("https://fakestoreapi.com/products");
     let data = await res.json();
-  
-    setProducts(
-      Object.entries(data).map(([key, value]) => ({ ...value, id: key }))
-    );
+
+    setProducts(data);
   }
   console.log(products);
   useEffect(() => {
@@ -41,7 +37,7 @@ const ProductList = () => {
             start: "top 80%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
-            scrub: true, 
+            scrub: true,
           },
         }
       );
@@ -50,20 +46,18 @@ const ProductList = () => {
 
   return (
     <>
-      <Navbar />
       <div className=" pyt-8">
         <div
           ref={gridRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-30 px-15"
         >
-          {products.map((product, index) => (
-            <div key={index} className="flex justify-center product-card ">
+          {products.map((product) => (
+            <div key={product.id} className="flex justify-center product-card ">
               <ProductCard product={product} />
             </div>
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

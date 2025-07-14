@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import { gsap } from "gsap";
 
 const ProductCard = ({ product }) => {
+  console.log(product);
   const cardRef = useRef(null);
 
   useEffect(() => {
