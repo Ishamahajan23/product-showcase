@@ -1,11 +1,61 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react";
+import ProductCard from "../components/ProductCard";
 import Navbar from "../components/Navbar";
 import CardSwap, { Card } from "../../reactbits/CardSwap/CardSwap";
 import ScrollVelocity from "../../reactbits/ScrollVelocity/ScrollVelocity";
 import image2 from "../assets/image2.png";
 import Footer from "../components/Footer";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CurvedLoop from "../../reactbits/CurvedLoop/CurvedLoop";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
     const velocity = 30; 
+    const [products, setProducts] = useState([]);
+    const gridRef = useRef(null);
+
+
+
+    async function fetchProduct() {
+        let res = await fetch("https://fakestoreapi.com/products");
+        let data = await res.json();
+        let Data = data.filter((product) => product.rating.rate >= 4.5);
+
+        setProducts(
+          Object.entries(Data.slice(0,4)).map(([key, value]) => ({ ...value, id: key }))
+        );
+      }
+
+      useEffect(() => {
+        fetchProduct();
+      }, []);
+
+      useEffect(() => {
+        if (gridRef.current) {
+          const cards = gridRef.current.querySelectorAll(".product-card");
+          gsap.fromTo(
+            cards,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              stagger: 0.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: gridRef.current,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse",
+                scrub: true, 
+              },
+            }
+          );
+        }
+      }, [products]);
   return (
     <>
       <div className="relative min-h-screen w-full bg-gray-800">
@@ -13,13 +63,14 @@ const Home = () => {
 
         <div
           style={{
-            height: "700px",
+            height: "800px",
             position: "relative",
             width: "100%",
             overflow: "hidden",
             background: "linear-gradient(to right, #4990F6, #37F5B9)",
             color: "#fff",
           }}
+          className="md:h-[800px] h-screen w-full relative flex items-center justify-center"
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <ScrollVelocity
@@ -73,6 +124,26 @@ const Home = () => {
               />
             </Card>
           </CardSwap>
+        </div>
+        <CurvedLoop
+          marqueeText="Top ✦ Collections ✦ With ✦ Top ✦ Brands ✦"
+          speed={3}
+          curveAmount={100}
+          direction="right"
+          interactive={true}
+          className="custom-text-style text-5xl md:text-3xl text-white "
+        />
+        <div className=" pyt-2">
+          <div
+            ref={gridRef}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-10 px-15"
+          >
+            {products.map((product, index) => (
+              <div key={index} className="flex justify-center product-card ">
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div>
