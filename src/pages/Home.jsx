@@ -141,7 +141,7 @@ const Home = () => {
               ) : (
                 <div
                   ref={gridRef}
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-10 px-15 opacity-0"
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#1E2938] py-10 px-15 opacity-0"
                   style={{ animation: "fadeIn 0.6s ease-in-out 0.2s forwards" }}
                 >
                   {products.map((product) => (

@@ -16,7 +16,6 @@ function useElementWidth(ref) {
     function updateWidth() {
       if (ref.current) {
         setWidth(ref.current.offsetWidth);
-        console.log("Updated copy width:", ref.current.offsetWidth); // Debugging log
       }
     }
     updateWidth();
@@ -100,7 +99,6 @@ export const ScrollVelocity = ({
       }
 
       moveBy += directionFactor.current * moveBy * velocityFactor.get();
-      console.log("Move by:", moveBy, "Velocity factor:", velocityFactor.get()); // Debugging log
       baseX.set(baseX.get() + moveBy);
     });
 

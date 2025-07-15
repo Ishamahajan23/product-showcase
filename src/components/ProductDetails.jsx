@@ -14,7 +14,6 @@ const ProductDetails = () => {
       setLoading(true);
       let res = await fetch(`https://fakestoreapi.com/products/${id}`);
       let data = await res.json();
-      console.log(data);
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product:", error);
