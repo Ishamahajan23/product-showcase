@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className=" w-full flex flex-col md:flex-row items-center justify-center gap-4 p-6 bg-gray-100 h-screen">
+      <div className=" w-full flex flex-col md:flex-row items-center justify-center gap-4 p-6 bg-gray-100 md:h-screen">
         {loading ? (
           <Loader />
         ) : (
@@ -49,7 +49,7 @@ const ProductDetails = () => {
               <h1 className="text-2xl md:text-4xl font-bold mb-4">
                 <SplitText
                   text={product.title}
-                  className="md:text-4xl  font-semibold text-center"
+                  className="md:text-4xl font-semibold"
                   delay={100}
                   duration={0.6}
                   ease="power3.out"
