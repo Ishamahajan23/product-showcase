@@ -37,7 +37,6 @@ const ProductList = () => {
             start: "top 80%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
-            scrub: true,
           },
         }
       );
@@ -46,10 +45,10 @@ const ProductList = () => {
 
   return (
     <>
-      <div className=" pyt-8">
+      <div className="pyt-8 scroll-smooth">
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-30 px-15"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#1E2938] py-20 px-15"
         >
           {products.map((product) => (
             <div key={product.id} className="flex justify-center product-card ">

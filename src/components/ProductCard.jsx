@@ -47,14 +47,14 @@ const ProductCard = ({ product }) => {
   return (
     <div
       ref={cardRef}
-      className="bg-white shadow-md p-4 rounded-2xl flex flex-col items-center justify-between h-full w-full transition-transform duration-300 hover:shadow-lg cursor-pointer"
+      className="bg-white shadow-md shadow-gray-400 p-2  rounded-2xl flex flex-col items-center justify-between h-full w-full transition-transform duration-300 hover:shadow-lg cursor-pointer"
       onClick={handleClick}
     >
       <div className="flex flex-col items-center justify-center">
         <img
           src={product.image}
           alt={product.title}
-          className="w-100 h-100 object-full rounded-t-lg"
+          className=" w-150 md:w-70 h-70 object-full rounded-t-lg"
         />
         <h2 className="text-lg font-semibold mt-2 text-wrap font-sans text-center">
           {product.title}
