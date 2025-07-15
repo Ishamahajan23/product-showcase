@@ -26,10 +26,10 @@ const ProductDetails = () => {
   useEffect(() => {
     fetchProduct();
   }, [id]);
-  
-const handleAnimationComplete = () => {
-  console.log("All letters have animated!");
-};
+
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
 
   return (
     <>

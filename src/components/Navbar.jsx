@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import CircularText from "../../reactbits/CircularText/CircularText";
-import TextPressure from "../../reactbits/TextPressure/TextPressure"
-import GradientText from "../../reactbits/GradientText/GradientText"
+import TextPressure from "../../reactbits/TextPressure/TextPressure";
+import GradientText from "../../reactbits/GradientText/GradientText";
 
 const Navbar = () => {
   return (
@@ -19,13 +19,13 @@ const Navbar = () => {
           </GradientText>
         </div>
 
-        <div className="flex space-x-6 text-gray-100 font-lg px-5 font-sans" >
+        <div className="flex space-x-6 text-gray-100 font-lg px-5 font-sans">
           <Link to="/">Home</Link>
           <Link to="/products">Shop</Link>
         </div>
       </header>
     </>
   );
-}
+};
 
 export default Navbar;

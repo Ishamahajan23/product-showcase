@@ -76,7 +76,6 @@ const Home = () => {
                 <ScrollVelocity
                   texts={["New Collection", "Shop Now"]}
                   velocity={velocity}
-
                   className="custom-scroll-text"
                 />
               </div>
